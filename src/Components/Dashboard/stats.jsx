@@ -7,20 +7,20 @@ import Graph1 from './graphs';
 const useStyles = makeStyles({
     card: {
         position: 'relative',
+        overflow: 'visible',
         display: 'inline-block',
-        width: 24+ '%',
-        marginRight: 1+'%',
-        height: 50+'%',
-        minHeight:200,
-        overflow: 'visible'
+        width: 21+ '%',
+        marginLeft: 1+'%'
     },
     graph: {
         position: 'absolute',
-        top: '-'+8+'%',
+        top: '-'+10+'%',
         left: 5+'%',
         width: 90+'%',
-         padding:2+'%',
-         borderRadius: 8+'%'
+         padding:1+'%',
+         paddingTop: 0,
+         borderRadius: 8+'%',
+         height: 80+'%'
     }
 })
 
@@ -41,13 +41,13 @@ export default function Statistics(){
         }
     ]
     return(
-        <Grid style={{}}>
+        <Grid style={{textAlign: 'center'}}>
             {graphs.map((graph) => (
                 <Card className = {classes.card}>
                 <CardActionArea className= {classes.graph} style={{backgroundColor: graph.backgroundColor}}>
                     <Graph1></Graph1>
                 </CardActionArea>
-            <CardContent style={{marginTop:45+'%'}}>
+            <CardContent style={{marginTop:70+'%'}}>
                     <h6 >{graph.type}</h6>
             </CardContent>
             </Card>

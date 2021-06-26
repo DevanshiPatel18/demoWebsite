@@ -1,4 +1,4 @@
-import { Card,CardHeader, CardContent, Grid, Paper} from '@material-ui/core';
+import { Card,CardHeader, CardContent, Grid, Paper, Typography} from '@material-ui/core';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Language } from '@material-ui/icons';
@@ -9,31 +9,27 @@ import { useRef } from 'react';
 const useStyles = makeStyles({
     paper: {
         display: 'inline-block',
-        width: 45+ '%',
-        marginRight: 3 + '%',
-        marginLeft: 2 + '%',
-        height: 500
+        width: 50+ '%',
     },
     icon: {
         width: 10 + '%',
         padding: 2+ '%'
     },
-    table: {
-        position: 'absoulte',
-        width: 45 + '%',
+    table: {    
+        width: 40+ '%',
         display: 'inline-block',
-        marginRight: 3 + '%',
-        marginLeft: 2 + '%',
-        height: 500,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        padding: 4+'%'
     },
     worldLogo: {
+        display: 'inline-block',
         position: 'absolute',
-        top: '-'+3 + '%',
-        left: 3 + '%',
-        width: 100,
-        height: 50+ '%',
-        maxHeight: 80
+        top: '-' + 4+'%',
+        left: 3+'%',
+        width: 8+'%',
+        height: 18+'%',
+        padding: 1+'%',
+        backgroundColor: 'lightgreen'
     }
 });
 
@@ -53,14 +49,11 @@ export default function GlobalSales() {
     ]
 
     return(
-        <Grid style = {{backgroundColor: 'white', width: 92 + '%', position: 'relative', marginTop: 2 +'%', marginLeft: 2+'%', marginBottom: 5+'%'}}>
-            <Paper className={classes.worldLogo}component= {Language} style= {{}}></Paper>
-                <Table className = {classes.table} aria-lable = 'simple table'>
-                    <TableHead>
-                        <TableRow style={{float: 'left'}}>
-                                <CardContent style= {{display: 'inline-block', float: 'right'}}>
-                                    <h6 style= {{textAlign: 'right', marginLeft: 50 +'%', width: 100 + '%'}}>Global Sales from Top Locations</h6></CardContent>
-                        </TableRow>
+        <Grid style = {{backgroundColor: 'white',width: 92 + '%', position: 'relative', marginTop: 5 +'%', marginLeft:4+'%', marginBottom: 5+'%'}}>
+                <Table className = {classes.table}>
+                    <TableHead style={{width: 100+'%'}}>
+                                    <Card className={classes.worldLogo}component= {Language} style= {{}}></Card>
+                                    <h6 style={{display: 'inline-block',widht: 100+'%', position: 'absolute', left: 14+'%', top: ''+ 4 +'%'}}>Global Sales from Top Locations</h6>
                     </TableHead>
                     <TableBody>
                         {rows.map((row) => (
@@ -81,24 +74,27 @@ export default function GlobalSales() {
                         ))}
                     </TableBody>
                 </Table>
-            <Paper className = {classes.paper} style = {{position: 'relative', left: 3+'%'}}>
-                <VectorMap map={'world_mill'}
-                       backgroundColor="#c9c9c9"
+            <Grid className = {classes.paper} style = {{position: 'relative', left: 3+'%',
+        marginLeft: 2 + '%',height: 300
+        }}>
+                <VectorMap className = {classes.paper} style = {{position: 'relative', left: 3+'%',border: 'none'}} map={'world_mill'}
+                       backgroundColor=""
                        ref={map}
                        containerStyle={{
                         width: '100%',
                         height: '100%'
                     }}
-                    markerStyle={{
+                    regionStyle={{
                         initial: {
-                          fill: "#FFFF",
-                          stroke: "#741852"
+                          fill: "#cfcfcf",
+                          strokeWidth: '2',
+                          stroke: "#111111"
                         }
                       }}
                       
                        containerClassName="map"
             />
-            </Paper>
+            </Grid>
         </Grid>
     );
 

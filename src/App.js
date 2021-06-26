@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import routes from './routes';
 import { Switch, Route } from 'react-router-dom';
-import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
+import {createStyles, makeStyles} from '@material-ui/core/styles';
 import ResponsiveDrawer from './Components/Navbar/navbar';
 import { blueGrey } from '@material-ui/core/colors';
 
@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) =>
         textAlign: 'left',
         marginLeft: 15 + '%',
         width: 85 + '%',
-        border: '1px solid black',
         backgroundColor: blueGrey[50]
     },
   })  

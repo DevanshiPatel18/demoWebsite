@@ -13,27 +13,27 @@ import { blueGrey } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
   root: {
-  },
-  paper: {
-      position: 'relative',
-      width: 21 + '%',
-      display: 'inline-block',
-      margin: 2 + '%'
+      display: 'inline',
+      marginBottom: 10+'%',
+      width: 100+'%'
   },
   content: {
+    display: 'inline-block',
+    width: 20+ '%',
+    marginLeft:4+'%',
     position: 'relative',
     textAlign: 'right',
-    maxHeight: 1 + '%',
-    
+    maxHeight: 150,
+    overflow: 'visible',
   },
   media: {
     position: 'absolute',
-    zIndex: 1,
-    height: 40 + '%',
-    width: 8+ '%',
-    marginLeft: 3 + '%',
+    height: 50 + '%',
+    top: '-'+5+'%',
+    width: 30+ '%',
+    marginLeft: 5 + '%',
     color: blueGrey[50],
-    padding: 1+ '%',
+    padding: 4+ '%',
     borderRadius: 5 + '%',
     maxHeight: 70 + 'px'
   },
@@ -75,26 +75,19 @@ export default function MediaCard() {
   return (
     <Grid className={classes.root} >
         {cardContent.map((content) => (
-            <Grid item style = {{display : 'inline'}} spacing = {2}>
-                <CardHeader component = {content.icon} className = {classes.media} style = {{ backgroundColor : content.backgroundColor}}></CardHeader>
-                <Paper className = {classes.paper}>
                     <Card className = {classes.content}>
-                    <CardActionArea>
+                    <CardHeader component = {content.icon} className = {classes.media} style = {{ backgroundColor : content.backgroundColor}}></CardHeader>
                         <CardContent>
                             <Typography variant="h5" component="h2">
                                 <h6>{content.contentTitle}</h6>
                                 <p>{content.contentBody}</p>
                             </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                <CardActions>
-                    <Button size="small" color="primary">
+                            
+                    <Button size="small" color="primary" style={{float: 'left'}}>
                         {content.bottomContent}
                     </Button>
-                </CardActions>
+                        </CardContent>
             </Card>
-                </Paper>
-       </Grid>
      ))}
     </Grid>
   );
