@@ -17,41 +17,40 @@ const data = {
 
 const lineOptions = {
   scales: {
-    xAxes: [
-      {
-        gridLines: {
-          display: false
-        }
+    x: {
+      grid: {
+        color: 'white',
+        borderColor: 'white',
+        tickColor: 'white',
+        borderDash: [5,],
+        lineWidth: 0.23,
+        borderColor: 'rgba(255, 255, 255, 0.12)',
+      },
+      ticks: {
+        color: 'white'
+      } 
+    },
+    y: {
+      grid: {
+        color: 'white',
+        lineWidth: 0.23,
+        borderColor: 'white',
+        tickColor: 'white',
+        borderDash: [5,],
+        borderColor: 'rgba(255, 255, 255, 0.46)'
+      },
+      ticks: {
+        color: 'white'
       }
-    ],
-    yAxes: [
-      {
-        // stacked: true,
-        gridLines: {
-          display: false
-        },
-        ticks: {
-          beginAtZero: true,
-          // Return an empty string to draw the tick line but hide the tick label
-          // Return `null` or `undefined` to hide the tick line entirely
-          userCallback(value) {
-            // Convert the number to a string and splite the string every 3 charaters from the end
-            value = value.toString();
-            value = value.split(/(?=(?:...)*$)/);
-
-            // Convert the array to a string and format the output
-            value = value.join(".");
-            return `Rp.${value}`;
-          }
-        }
-      }
-    ]
+    }
   },
-  legend: {
-    display: true
+  plugins:{
+    legend: {
+      display: false
+    }
   },
-  tooltips: {
-    enabled: false
+  datalables: {
+    display: false
   }
 };
 

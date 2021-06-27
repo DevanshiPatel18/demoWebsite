@@ -1,9 +1,12 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, Grid } from "@material-ui/core";
-import { Doughnut } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 
 const useStyles = makeStyles({
-
+  root: {
+    width: 100+'%',
+    height: 100+'%',
+  }
 });
 
 export default function MyPieChart(){
@@ -12,19 +15,19 @@ export default function MyPieChart(){
 
     
 const data = {
-    labels: ["Red", "Green", "Yellow"],
+    labels: ["Defective", "Non-Defective"],
     datasets: [
       {
-        data: [10, 20, 60],
-        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
+        data: [1000,70000],
+        backgroundColor: ["#FF6384", "#36A2EB"]
       }
     ]
   };
   
   const options = {
-    cutoutPercentage: 80,
-    animation: false,
-    maintainAspectRatio: false,
+    cutoutPercentage: 0,
+    animation: true,
+    maintainAspectRatio: true,
     elements: {
       arc: {
         borderWidth: 0,
@@ -32,13 +35,20 @@ const data = {
           console.log(1, data);
         }
       }
+    },
+    legend:{
+      display: false,
+      poistion: 'right'
+    },
+    datalables: {
+      display: true
     }
   };
   
 
     return (
-        <div>
-        <Doughnut data={data} options={options} />
+        <div className= {classes.root}>
+        <Pie data={data} options={options} />
         </div>
     );
 }

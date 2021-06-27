@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import { Card, CardActionArea, CardContent } from '@material-ui/core';
 import Graph1 from './graphs';
+import { blueGrey, green, orange, red, blue } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
     card: {
@@ -28,16 +29,16 @@ export default function Statistics(){
     const classes = useStyles();
     const graphs = [
         {   type: 'OEE',
-            backgroundColor: 'yellow'
+            backgroundColor: red[500]
         },{
             type: 'Performance',
-            backgroundColor: 'pink'
+            backgroundColor: green[500]
         }, {
             type: 'Quality',
-            backgroundColor: 'orange'
+            backgroundColor: blue[500]
         },{
             type: 'Availibilty',
-            backgroundColor: 'red'
+            backgroundColor: orange[500]
         }
     ]
     return(

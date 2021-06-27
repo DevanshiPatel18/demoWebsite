@@ -1,10 +1,11 @@
-import { Card,CardHeader, CardContent, Grid, Paper, Typography} from '@material-ui/core';
+import { Card, Grid} from '@material-ui/core';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Language } from '@material-ui/icons';
 import { Table, TableRow, TableCell ,TableHead, TableBody } from '@material-ui/core';
 import {VectorMap} from 'react-jvectormap';
 import { useRef } from 'react';
+import { blueGrey, green } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
     paper: {
@@ -29,7 +30,8 @@ const useStyles = makeStyles({
         width: 8+'%',
         height: 18+'%',
         padding: 1+'%',
-        backgroundColor: 'lightgreen'
+        backgroundColor: green[500],
+        color: blueGrey[50]
     }
 });
 
@@ -59,7 +61,7 @@ export default function GlobalSales() {
                         {rows.map((row) => (
                             <TableRow key={row.country}>
                                 <TableCell align = 'center'>
-                                    <img src= {row.iconCountry } />
+                                    <img src= {row.iconCountry } alt = 'country-flag'/>
                                 </TableCell>
                                 <TableCell align = 'center'>
                                     {row.country}

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React  from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -16,7 +16,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 import routes from '../../routes';
 import { blueGrey } from '@material-ui/core/colors';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import { InputBase } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
@@ -117,7 +117,7 @@ function ResponsiveDrawer(props) {
     return (
         <div className={classes.root} >
             <CssBaseline />
-            <AppBar position="fixed" className={classes.appBar} style={{ boxShadow: 'none '}}>
+            <AppBar position="" className={classes.appBar} style={{ boxShadow: 'none '}}>
                 <Toolbar style={{backgroundColor: blueGrey[50], color: 'grey', overflow: 'visible'}}>
                     <IconButton
                         color="inherit"
@@ -128,8 +128,8 @@ function ResponsiveDrawer(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" style={{width: 30+'%', marginLeft: '-'+1+'%'}}>
-                        <MoreIcon></MoreIcon>
+                    <Typography variant="h6" style={{width: 40+'%', marginLeft: '-'+1+'%'}}>
+                        <Paper style={{width: 20+'%', display: 'inline-block', marginRight: 5+'%', borderRadius: 100+'%',textAlign: 'center'}}><MoreIcon></MoreIcon></Paper>
                         {props.location.pathname === '/' ? 'DashBoard' : (props.location.pathname === '/calendar' ? 'Calendar' : 'Charts')}
                     </Typography>
                     <Grid style={{width: 60+'%', marginLeft: 70+'%',display: 'inline-block'}}>

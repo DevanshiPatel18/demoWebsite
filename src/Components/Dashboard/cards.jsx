@@ -1,15 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { FilterNone, Home, Schedule, Store } from '@material-ui/icons';
-import { Grid, Paper } from '@material-ui/core';
-import { blueGrey } from '@material-ui/core/colors';
+import { Grid} from '@material-ui/core';
+import { blueGrey, green, orange, red, blue } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
   root: {
@@ -48,28 +46,28 @@ export default function MediaCard() {
             contentTitle: 'Parts',
             contentBody: '84596',
             bottomContent: '24% Increase',
-            backgroundColor: 'red'
+            backgroundColor: orange[500]
         },{
             name: 'Home',
             icon : Home,
             contentTitle: 'Defective',
             contentBody: '889',
             bottomContent: '10% Decrease',
-            backgroundColor: 'green'
+            backgroundColor: green[500]
         },{
             name : 'Schedule',  
             icon: Schedule,
             contentTitle: 'Performance',
             contentBody: '90',
             bottomContent: 'Good',
-            backgroundColor: 'blue'
+            backgroundColor: red[500]
         },{
             name: 'Store',
             icon: Store,
             contentTitle: 'OEE',
             contentBody: '89',
             bottomContent: 'Good',
-            backgroundColor: 'pink'
+            backgroundColor: blue[500]
         }
     ]
   return (

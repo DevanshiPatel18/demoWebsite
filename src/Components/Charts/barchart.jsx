@@ -10,8 +10,7 @@ const useStyles = makeStyles({
 export default function MyBarChart(){
     const classes = useStyles();
 
-    const data = {
-        data: {
+    const  data = {
             labels: [
               "January",
               "February",
@@ -34,12 +33,65 @@ export default function MyBarChart(){
               },
     
             ]
-          }
-    };
+        };
     const options = {
-
+        offsetGridLines: true,
+        drawTicks: true,
+        layout: {
+        },
+        legend: {
+          display: false,
+          position: "right",
+          align: "start",
+          labels: {
+            usePointStyle: true
+          }
+        },plugins:{
+          legend: {
+            display: false
+          }
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          xAxes: [
+            {
+              stacked: true,
+              ticks: {
+                padding: 5
+              },
+              gridLines: {
+                display: false
+              }
+            }
+          ],
+          yAxes: [
+            {
+              stacked: false,
+              gridLines: {
+                drawBorder: false
+              },
+              ticks: {
+                beginAtZero: true,
+                maxTicksLimit: 6,
+                padding: 20,
+                callback(n) {
+                  if (n < 1e3) return n;
+                  if (n >= 1e3) return +(n / 1e3).toFixed(1) + "K";
+                }
+              }
+            }
+          ]
+        }
     };
     return (
-        <Bar data= {data} />
+      <div className="App">
+      <Bar
+        pointStyle="star"
+        data={data}
+        options = {options}
+        style= {{width:100+'%', height: 320}}
+      />
+    </div>
     );
 };

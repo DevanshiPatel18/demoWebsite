@@ -1,10 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Graph1 from '../Dashboard/graphs';
-import { Typography } from '@material-ui/core';
-import { Grid, Card, CardActionArea, CardContent, CardHeader} from '@material-ui/core';
+import { Typography, Paper } from '@material-ui/core';
+import { Grid, Card, CardActionArea, CardContent} from '@material-ui/core';
 import MyBarChart from './barchart';
 import MyPieChart from './piechart';
+import { Timeline } from '@material-ui/icons';
+import { red, green, blue, orange } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
     root: {
@@ -37,7 +39,16 @@ const useStyles = makeStyles({
         marginRight: 5+'%'
     },
     grid: {
-        marginTop: 5+'%'
+        marginTop: 5+'%',
+    },
+    logo: {
+        display: 'inline',
+        position: 'absolute',
+        width: 10+'%',
+        height: 15+'%',
+        top: '-'+5+'%',
+        left: 2+'%',
+
     }
 });
 
@@ -45,23 +56,23 @@ export default function ChartsMain(){
     const classes = useStyles();
     const graphs = [
         {   type: 'OEE',
-            backgroundColor: 'yellow'
+            backgroundColor: red[500]
         },{
             type: 'Performance',
-            backgroundColor: 'pink'
+            backgroundColor: blue[500]
         }, {
             type: 'Quality',
-            backgroundColor: 'orange'
+            backgroundColor: green[500]
         },{
             type: 'Availibilty',
-            backgroundColor: 'red'
+            backgroundColor: orange[500]
         }
     ];
 
     return(
     <div>
+        <Typography style={{marginBottom: 5+'%'}}><h2 className = {classes.h2}>Overall Analysis</h2></Typography>
         <Grid className={classes.grid}>
-             <Typography style={{marginBottom: 5+'%'}}><h2 className = {classes.h2}>Overall Analysis</h2></Typography>
             {graphs.map((graph) => (
                 <Card className = {classes.card}>
                 <CardActionArea className= {classes.graph} style={{backgroundColor: graph.backgroundColor}}>
@@ -74,9 +85,29 @@ export default function ChartsMain(){
             ))}
             
         </Grid>
-        <Grid className = {classes.grid}>
-            
-                    <h6>Hello</h6>
+        <Grid>
+        <Grid className = {classes.grid} style={{width: 48+'%',marginLeft: 1+'%',position: 'relative', overflow: 'visible', display: 'inline-block'}}>
+        <Paper className= {classes.logo} style ={{backgroundColor: red[500], padding: 2+'%'}} component= {Timeline}></Paper>
+            <Card style={{ display: 'flex', justifyContent: 'center', padding: 2+'%'}}>
+            <CardContent>
+                <Typography>
+                    <h4>Manufacted Part Detailes</h4>
+                </Typography>                
+                <MyPieChart className={classes.pieChart}></MyPieChart>
+                </CardContent>
+            </Card>
+        </Grid>
+        <Grid className = {classes.grid} style={{marginLeft: 2+'%',width: 48+'%',position: 'relative', overflow: 'visible',display: 'inline-block'}}>
+        <Paper className= {classes.logo} style ={{backgroundColor: green[500], padding: 2+'%'}} component= {Timeline}></Paper>
+            <Card style={{ display: 'flex', justifyContent: 'center', padding: 2+'%'}}>
+            <CardContent>
+                <Typography>
+                    <h4>Manufacted Part Detailes</h4>
+                </Typography>                
+                <MyBarChart className={classes.pieChart}></MyBarChart>
+                </CardContent>
+            </Card>
+        </Grid>
         </Grid>
     </div>
     )

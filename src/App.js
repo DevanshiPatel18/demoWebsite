@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) =>
         display: 'block',
         padding: theme.spacing(3),
         position: 'relative',
-        marginTop: 4 + '%',
         textAlign: 'left',
         marginLeft: 15 + '%',
         width: 85 + '%',

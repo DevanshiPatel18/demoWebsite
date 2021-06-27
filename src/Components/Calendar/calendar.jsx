@@ -1,4 +1,63 @@
-import React from "react";
+
+import React from 'react'
+import FullCalendar from '@fullcalendar/react' // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
+import interactionPlugin from '@fullcalendar/interaction';
+import { makeStyles } from '@material-ui/styles';
+import { Card, Grid } from '@material-ui/core';
+
+const useStyles = makeStyles({
+  calendar: {
+    width: '80hh'
+  }
+})
+export default function Calendar(){
+  
+  const calendarRef = React.createRef()
+  const classes = useStyles();
+
+  function onDateClick(arg){
+    const event = prompt('Enter Event details: ');
+    let calendarApi = calendarRef.current.getApi()
+    calendarApi.addEvent({
+      title: event,
+      start: arg.dateStr,
+      allDay: true
+    })
+    console.log(calendarApi.getEvents());
+  }
+
+    return (
+      <Card style={{textAlign:'center', padding: 2+'%', display: 'flex', justifyContent: 'center'}}>
+        <Grid style={{width: 80+'%'}}>
+      <FullCalendar
+        ref = {calendarRef}
+        plugins={[ dayGridPlugin, interactionPlugin]}
+        initialView="dayGridMonth"
+        dateClick =  {onDateClick}
+      />
+      </Grid>
+      </Card>
+    )
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import React from "react";
 import { Calendar as myCalendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import { Card } from "@material-ui/core";
@@ -31,6 +90,11 @@ onEventResize = (data) => {
     console.log(data);
   };
 
+  onClick = () => {
+    const eventName = prompt('Enter event on this day:');
+
+  }
+
   render() {
     return (
         <div style={{display: 'flex', justifyContent: 'center', height: '85vh'}}>
@@ -45,6 +109,7 @@ onEventResize = (data) => {
           onEventResize={this.onEventResize}
           resizable
           style={{ height: 500,  backgroundColor: 'white'}}
+          onClick = {this.onClick}
         />
       </Card>
       </div>
@@ -52,4 +117,4 @@ onEventResize = (data) => {
   }
 }
 
-export default Calendar;
+export default Calendar;*/
